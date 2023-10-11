@@ -1,1 +1,63 @@
+class Pokemon {
 
+  constructor(name, attack, defense, hp, luck) {
+    this.name = name;
+    this.attack = attack;
+    this.defense = defense;
+    this.hp = hp;
+    this.luck = Math.floor(Math.random() * 101)
+  }
+
+  isLucky(){
+    this.luck = Math.floor(Math.random() * 101)
+    return this.luck > Math.floor(Math.random() * 101)
+  }
+
+  attackPokemon(target){
+    if(this.isLucky()){
+        let damages = this.attack - target.defense
+        if(damages > 0){
+            target.hp -= damages
+        }
+    }
+    else{
+        console.log("pas de chance pour " + this.name)
+    }
+  }
+}
+
+let Nymphali = new Pokemon("Nymphali", 46, 24, 50);
+
+let Flabebe = new Pokemon("Flabebe", 38, 39, 44);
+
+const Fight = (pokemon1, pokemon2) => {
+
+  let hpPok1 = pokemon1.hp
+  let hpPok2 = pokemon2.hp
+  let lostHP = 0
+
+  while(pokemon1.hp > 0 || pokemon2.hp > 0){
+    console.log("- _ - _ - _ - _ - _ - _  _ - _ - _ -")
+    console.log("C'est maintenant au tour de " + pokemon1.name)
+    pokemon1.attackPokemon(pokemon2)
+    lostHP = hpPok2 - pokemon2.hp
+    console.log(pokemon2.name + " a perdu " + lostHP + " hp, il lui en reste " + pokemon2.hp)
+    hpPok = pokemon2.hp
+    if(pokemon2.hp <= 0){
+      console.log(pokemon2.name+ " n'est plus capable de se battre")
+      break
+    }
+    pokemon2.attackPokemon(pokemon1)
+    console.log("- _ - _ - _ - _ - _ - _  _ - _ - _ -")
+    console.log("C'est maintenant au tour de " + pokemon2.name)
+    lostHP = hpPok1 - pokemon1.hp
+    console.log(pokemon1.name + " a perdu " + lostHP +" hp, il lui en reste " + pokemon1.hp)
+    hpPok1 = pokemon1.hp
+    if(pokemon1.hp <= 0){
+      console.log(pokemon1.name+ " le looser")
+      break
+    }
+  }
+}
+
+Fight(Nymphali, Flabebe)
