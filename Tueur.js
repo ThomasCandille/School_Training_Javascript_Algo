@@ -39,28 +39,41 @@ for(let i=0; i<5 ; i++){
 
 let actionValue = Math.floor(Math.random() * 101)
 let target = 0
+let actor = 0
+let actorIndex = 0
+let survivor = liSurvivor[0]
 
 while(killer.hp > 0){
 
-        let actorIndex = target%liSurvivor.length
+    if(liSurvivor.length > 0){
+        actorIndex = target%liSurvivor.length
         console.log(actorIndex)
         console.log(liSurvivor)
-        let actor = liSurvivor[actorIndex].name
+        survivor = liSurvivor[actorIndex]
+        actor = survivor.name
+        actionValue = Math.floor(Math.random() * 101)
+        console.log(actionValue)
+    }
+    else{
+        console.log("tous mort :/")
+        break
+    }
 
     console.log("au tour de " + actor)
 
-    if(actionValue <= target.luckToDie){
-        liDead.push(liSurvivor.splice(actorIndex,actorIndex))
+    
+    if(actionValue <= survivor.luckToDie){
+        liDead.push(liSurvivor.splice(actorIndex,1)[0])
         console.log("Jason a tué" + actor)
     }
 
-    else if(actionValue >= target.luckToDamageAndDie){
+    else if(actionValue >= survivor.luckToDamageAndDie){
         killer.hp -= 10
         console.log(actor + " a equivé et a infligé 10 dmg")
     }
 
     else{
-        liDead.push(liSurvivor.splice(actorIndex,actorIndex))
+        liDead.push(liSurvivor.splice(actorIndex,1)[0])
         killer.hp -= 15
         console.log(actor + "est mort mais il a tapé")
     }
@@ -70,10 +83,10 @@ while(killer.hp > 0){
     target++
 
     if(killer.hp<=0){
+        console.log(liDead)
         console.log("Jason et mort")
         console.log("Rip à :")
-        liDead.forEach(function(entry) {
-            console.log(entry.name);
-          })
+        liDead.map((element) => console.log(element.name))
     }
+    
 }
