@@ -12,8 +12,8 @@ class Survivor{
     constructor(name,stat){
         this.name = name
         this.stat = stat
-        this.luckToDie = 30
-        this.luckToDamage = 50
+        this.luckToDie = 20
+        this.luckToDamage = 60
         this.luckToDamageAndDie = 20
     }
 
@@ -47,8 +47,6 @@ while(killer.hp > 0){
 
     if(liSurvivor.length > 0){
         actorIndex = target%liSurvivor.length
-        console.log(actorIndex)
-        console.log(liSurvivor)
         survivor = liSurvivor[actorIndex]
         actor = survivor.name
         actionValue = Math.floor(Math.random() * 101)
@@ -67,23 +65,20 @@ while(killer.hp > 0){
         console.log("Jason a tué" + actor)
     }
 
-    else if(actionValue >= survivor.luckToDamageAndDie){
+    else if(actionValue > survivor.luckToDie && actionValue < survivor.luckToDie+survivor.luckToDamage){
         killer.hp -= 10
         console.log(actor + " a equivé et a infligé 10 dmg")
     }
 
-    else{
+    else if(actionValue >= survivor.luckToDie+survivor.luckToDamage){
         liDead.push(liSurvivor.splice(actorIndex,1)[0])
         killer.hp -= 15
         console.log(actor + "est mort mais il a tapé")
     }
 
-    console.log(liSurvivor)
-
     target++
 
     if(killer.hp<=0){
-        console.log(liDead)
         console.log("Jason et mort")
         console.log("Rip à :")
         liDead.map((element) => console.log(element.name))
