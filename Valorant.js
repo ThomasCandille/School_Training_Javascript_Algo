@@ -88,14 +88,14 @@ while(winAtt < 13 && winDef < 13){                                              
             console.log("Spike down Mid")                                                                   //affichage de l'action
             spikePlanted = false                                                                            //update de l'état de la spike
 
-            if(Math.floor(Math.random()*100) < 50){                                                         //verification pour smoke de Omen
+            if(AttackersTeam.some(item => item.name == "Omen") && Math.floor(Math.random()*100) < 50){      //verification pour smoke de Omen
             
                 console.log("Omen Smoke le site !")                                                         //affichage de l'action
                 luckAtt = 60                                                                                //update de la chance des attaquants en duel
             
             }
 
-            if(Math.floor(Math.random()*100) < 50){                                                         //verif flash phoenix (si vivant + 50%)
+            if(AttackersTeam.some(item => item.name == "Phoenix") && Math.floor(Math.random()*100) < 50){   //verif flash phoenix (si vivant + 50%)
             
                 if(Math.floor(Math.random()*100) < 80){                                                     //verif si ca touche l'ennemi
                     
@@ -139,14 +139,14 @@ while(winAtt < 13 && winDef < 13){                                              
             console.log("Spike down Mid")                                                                   //affichage de l'action
             spikePlanted = false                                                                            //update de l'état de la spike
 
-            if(Math.floor(Math.random()*100) < 50){                                                         //verification pour smoke Omen
+            if(AttackersTeam.some(item => item.name == "Omen") && Math.floor(Math.random()*100) < 50){      //verification pour smoke Omen
                 
                 console.log("Omen Smoke le site !")                                                         //affichage de l'action
                 luckAtt = 60                                                                                //update de la chance des attaquants en duel
             
             }
 
-            if(Math.floor(Math.random()*100) < 50){                                                         //verif flash phoenix (si vivant + 50%)
+            if(AttackersTeam.some(item => item.name == "Phoenix") && Math.floor(Math.random()*100) < 50){   //verif flash phoenix (si vivant + 50%)
             
                 if(Math.floor(Math.random()*100) < 80){                                                     //verif si ca touche l'ennemi
                     
