@@ -94,6 +94,26 @@ while(winAtt < 13 && winDef < 13){                                              
                 luckAtt = 60                                                                                //update de la chance des attaquants en duel
             
             }
+
+            if(Math.floor(Math.random()*100) < 50){                                                         //verif flash phoenix (si vivant + 50%)
+            
+                if(Math.floor(Math.random()*100) < 80){                                                     //verif si ca touche l'ennemi
+                    
+                    if(spikePlanted == false){                                                              //verif si spike pas plant
+                        
+                        console.log("Phoenix flax l'ennemi !")                                              //affichage de l'action
+                        luckAtt = 60                                                                        //update de la chance des attaquants en duel
+                    
+                    }
+                }
+                
+                else{
+                    
+                    console.log("Phoenix rate sa flash !")                                                  //Si il rate sa flash
+                    luckAtt = 30                                                                            //update de la chance des attaquants en duel
+                
+                }
+            }
         }
     }
 
@@ -125,30 +145,30 @@ while(winAtt < 13 && winDef < 13){                                              
                 luckAtt = 60                                                                                //update de la chance des attaquants en duel
             
             }
+
+            if(Math.floor(Math.random()*100) < 50){                                                         //verif flash phoenix (si vivant + 50%)
+            
+                if(Math.floor(Math.random()*100) < 80){                                                     //verif si ca touche l'ennemi
+                    
+                    if(spikePlanted == false){                                                              //verif si spike pas plant
+                        
+                        console.log("Phoenix flax l'ennemi !")                                              //affichage de l'action
+                        luckAtt = 60                                                                        //update de la chance des attaquants en duel
+                    
+                    }
+                }
+                
+                else{
+                    
+                    console.log("Phoenix rate sa flash !")                                                  //Si il rate sa flash
+                    luckAtt = 30                                                                            //update de la chance des attaquants en duel
+                
+                }
+            }
         }
     }
 
     while(DefendersTeam.length > 0 && AttackersTeam.length > 0){                                            //Tant qu'il y a des agents dans les deux équipes                                                                                        
-
-        if(AttackersTeam.some(item => item.name == "Phoenix") && Math.floor(Math.random()*100) < 50){       //verif flash phoenix (si vivant + 50%)
-            
-            if(Math.floor(Math.random()*100) < 80){                                                         //verif si ca touche l'ennemi
-                
-                if(spikePlanted == false){                                                                  //verif si spike pas plant
-                    
-                    console.log("Phoenix flax l'ennemi !")                                                  //affichage de l'action
-                    luckAtt = 60                                                                            //update de la chance des attaquants en duel
-                
-                }
-            }
-            
-            else{
-                
-                console.log("Phoenix rate sa flash !")                                                      //Si il rate sa flash
-                luckAtt = 30                                                                                //update de la chance des attaquants en duel
-            
-            }
-        }
 
         if(Math.floor(Math.random()*100) < luckAtt){                                                        //Si les attaquants gagne
 

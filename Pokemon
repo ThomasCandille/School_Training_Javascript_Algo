@@ -1,3 +1,5 @@
+//DEFINITION DE LA CLASSE
+
 class Pokemon {
 
   constructor(name, attack, defense, hp, luck) {
@@ -8,54 +10,71 @@ class Pokemon {
     this.luck = Math.floor(Math.random() * 101)
   }
 
-  isLucky(){
-    this.luck = Math.floor(Math.random() * 101)
+  isLucky(){ //permet de savoir si l'attaque touche ou non
+    this.luck = Math.floor(Math.random() * 101) //update a chaque tour
     return this.luck > Math.floor(Math.random() * 101)
   }
 
-  attackPokemon(target){
-    if(this.isLucky()){
+  attackPokemon(target){ //permet d'attquer l'autre pokemon
+    if(this.isLucky()){ //si ca touche, inflige des dégats si la valeur finale est positive
         let damages = this.attack - target.defense
         if(damages > 0){
             target.hp -= damages
         }
     }
-    else{
+    else{ //sinon c'est raté
         console.log("pas de chance pour " + this.name)
     }
   }
 }
 
+//CREATION DES VARIABLES
+
 let Nymphali = new Pokemon("Nymphali", 46, 24, 50);
 
 let Flabebe = new Pokemon("Flabebe", 38, 39, 44);
 
+//CREATION DES FONCTIONS
+
 const Fight = (pokemon1, pokemon2) => {
 
-  let hpPok1 = pokemon1.hp
+  let hpPok1 = pokemon1.hp //récupération ds hp pour les affichages
   let hpPok2 = pokemon2.hp
   let lostHP = 0
 
-  while(pokemon1.hp > 0 || pokemon2.hp > 0){
+  while(pokemon1.hp > 0 || pokemon2.hp > 0){ //tant que les deux pokemons on de la vie
     console.log("- _ - _ - _ - _ - _ - _  _ - _ - _ -")
     console.log("C'est maintenant au tour de " + pokemon1.name)
-    pokemon1.attackPokemon(pokemon2)
-    lostHP = hpPok2 - pokemon2.hp
+
+    pokemon1.attackPokemon(pokemon2) 
+
+    lostHP = hpPok2 - pokemon2.hp //affichage de l'etat du pokemon
     console.log(pokemon2.name + " a perdu " + lostHP + " hp, il lui en reste " + pokemon2.hp)
     hpPok = pokemon2.hp
-    if(pokemon2.hp <= 0){
+
+    if(pokemon2.hp <= 0){ // verification si pokemon vivant, si non -> fin du combat
+
       console.log(pokemon2.name+ " n'est plus capable de se battre")
       break
+
     }
+
+    //Tour de l'autre pokemon
+
     pokemon2.attackPokemon(pokemon1)
+
     console.log("- _ - _ - _ - _ - _ - _  _ - _ - _ -")
     console.log("C'est maintenant au tour de " + pokemon2.name)
-    lostHP = hpPok1 - pokemon1.hp
+
+    lostHP = hpPok1 - pokemon1.hp//affichage de l'etat du pokemon
     console.log(pokemon1.name + " a perdu " + lostHP +" hp, il lui en reste " + pokemon1.hp)
     hpPok1 = pokemon1.hp
-    if(pokemon1.hp <= 0){
+
+    if(pokemon1.hp <= 0){ // verification si pokemon vivant, si non -> fin du combat
+
       console.log(pokemon1.name+ " le looser")
       break
+
     }
   }
 }
